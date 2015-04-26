@@ -37,7 +37,8 @@ app.get('/oauth/callback', function (req, res) {
   sys.puts(">>"+req.session.oauthRequestToken);
   sys.puts(">>"+req.session.oauthRequestTokenSecret);
   sys.puts(">>"+req.query.oauth_verifier);
-  twitterOauth().getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier, function(error, oauthAccessToken, oauthAccessTokenSecret, results) {
+  var consumer = twitterOauth();
+  consumer.getOAuthAccessToken(req.session.oauthRequestToken, req.session.oauthRequestTokenSecret, req.query.oauth_verifier, function(error, oauthAccessToken, oauthAccessTokenSecret, results) {
     if (error) {
       res.send("Error getting OAuth access token : " + sys.inspect(error) + "["+oauthAccessToken+"]"+ "["+oauthAccessTokenSecret+"]"+ "["+sys.inspect(results)+"]", 500);
     } else {
