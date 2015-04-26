@@ -1,27 +1,9 @@
-var express = require('express');
 var sys = require('sys');
 var oauth = require('oauth');
+var express = require('express');
+var router = express.Router();
 
-var app = express();
-
-app.dynamicHelpers({
-  session: function(req, res){
-    return req.session;
-  }
-});
-
-var webhook = require('express-ifttt-webhook');
-app.use(webhook());
-
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
-
-app.post('/ifz', function (req, res) {
-  res.send('foo');
-});
-
-app.get('/oauth', function (req, res) {
+router.get('/', function (req, res) {
   twitterOauth().getOAuthRequestToken(function(error, oauthToken, oauthTokenSecret, results){
     if (error) {
       res.send("Error getting OAuth request token : " + sys.inspect(error), 500);
@@ -33,7 +15,7 @@ app.get('/oauth', function (req, res) {
   });
 })
 
-app.get('/oauth/callback', function (req, res) {
+router.get('/callback', function (req, res) {
   sys.puts(">>"+req.session.oauthRequestToken);
   sys.puts(">>"+req.session.oauthRequestTokenSecret);
   sys.puts(">>"+req.query.oauth_verifier);
@@ -58,13 +40,6 @@ app.get('/oauth/callback', function (req, res) {
   });
 })
 
-var server = app.listen(process.env.PORT || 3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Example app listening at http://%s:%s', host, port);
-});
-
 function twitterOauth() {
   var url = process.env.APP_URL;
   return new oauth.OAuth("https://twitter.com/oauth/request_token",
@@ -72,3 +47,5 @@ function twitterOauth() {
                  process.env.consumer_key, process.env.consumer_secret, 
                  "1.0A", url+"/oauth/callback", "HMAC-SHA1");
 }
+
+module.exports = router;
