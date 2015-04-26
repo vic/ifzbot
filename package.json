@@ -26,6 +26,8 @@
   "homepage": "https://github.com/vic/ifzbot",
   "dependencies": {
     "express": "^4.12.3",
-    "express-ifttt-webhook": "^0.2.3"
+    "express-ifttt-webhook": "^0.2.3",
+    "ifvms": "git://github.com/curiousdannii/ifvms.js",
+    "oauth": "^0.9.12"
   }
 }
