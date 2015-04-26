@@ -1,0 +1,31 @@
+{
+  "name": "ifzbot",
+  "version": "1.0.0",
+  "description": "Interactive Fuction ZMachine Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/vic/ifzbot"
+  },
+  "keywords": [
+    "ifzbot",
+    "twitter",
+    "zmachine",
+    "if",
+    "interactive",
+    "fiction"
+  ],
+  "author": "Victor Borja <vborja@apache.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vic/ifzbot/issues"
+  },
+  "homepage": "https://github.com/vic/ifzbot",
+  "dependencies": {
+    "express": "^4.12.3",
+    "express-ifttt-webhook": "^0.2.3"
+  }
+}
