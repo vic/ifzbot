@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/ifz', function (req, res) {
-  res.send('');
+  res.send('foo');
 });
 
 app.get('/oauth', function (req, res) {
