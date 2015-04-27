@@ -19,11 +19,11 @@ function reply(tweet_url, screen_name, status, cb) {
 }
 
 router.post('/', function(req, res, next) {
-  console.log(">>>>>>>> ", sys.inspect(req.query));
+  console.log(">>>>>>>> ", sys.inspect(req.body));
 
-  var url = req.query.title;
-  var text = req.query.description;
-  var screen_name = req.query.tags;
+  var url = req.body.title;
+  var text = req.body.description;
+  var screen_name = req.body.tags;
 
 
   reply(url, screen_name, text);
