@@ -20,7 +20,7 @@ function reply(tweet_url, screen_name, status, cb) {
 
 router.post('/', function(req, res, next) {
   var url = req.params.title;
-  var text = req.params.body;
+  var text = req.params.description;
   var screen_name = req.params.tags[0];
 
   reply(url, screen_name, text);
