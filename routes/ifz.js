@@ -13,12 +13,13 @@ var T = new Twit({
 function reply(tweet_url, screen_name, status, cb) {
   var id = tweet_url.match(/[\w-]+$/)[0];
   return T.post('statuses/update', {
-    status: sys.format('@%s: %s', screen_name, status),
+    status: sys.format('@%s %s', screen_name, status),
     in_reply_to_status_id: id
   }, cb);
 }
 
 router.post('/', function(req, res, next) {
+  console.log("GOT REQ ", sys.inspect(res.params));
   var url = req.params.title;
   var text = req.params.description;
   var screen_name = req.params.tags[0];
