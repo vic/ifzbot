@@ -30,7 +30,7 @@
     "cookie-parser": "~1.3.4",
     "debug": "~2.1.1",
     "express": "^4.12.3",
-    "express-ifttt-webhook": "^0.2.3",
+    "express-ifttt-webhook": "git://github.com/vic/express-ifttt-webhook",
     "express-session": "^1.11.1",
     "ifvms": "git://github.com/curiousdannii/ifvms.js",
     "jade": "~1.9.2",
