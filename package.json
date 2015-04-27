@@ -4,6 +4,7 @@
   "description": "Interactive Fuction ZMachine Bot",
   "main": "index.js",
   "scripts": {
+    "nf": "./node_modules/.bin/nf start",
     "test": "mocha"
   },
   "repository": {
