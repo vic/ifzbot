@@ -1,20 +1,22 @@
-var express = require('express');
-var router = express.Router();
+var sys = require('sys');
+var lodash = require('lodash');
+var router = require('express').Router();
+var ifz = require('../lib/ifz');
 
 
 router.post('/', function(req, res, next) {
-  console.log(">>>>>>>> ", sys.inspect(req.body));
 
-  var url = req.body.tags[0];
-  var text = req.body.description;
-  var screen_name = req.body.title;
+  var payload = {
+    username: 'ifzbot',
+    from: req.body.from,
+    text: req.body.text,
+    url:  req.body.url
+  }
 
+  ifz(payload, function (err, data){ 
+    res.send(sys.inspect(err || data));
+  })
 
-  reply(url, screen_name, text, function () {
-    console.log("<<<<<<<<<< ", sys.inspect(arguments));
-  });
-
-  res.send('');
 });
 
 module.exports = router;

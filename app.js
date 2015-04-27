@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 var webhook = require('express-ifttt-webhook');
-app.use(webhook(require('./lib/auth'), require('./lib/ifz')));
+app.use(webhook(require('./lib/auth'), require('./lib/webhook')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
