@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+var lodash = require('lodash');
+var loadEnvs = require('../node_modules/foreman/lib/envs').loadEnvs;
+
+var env = loadEnvs(__dirname + '/../.env');
+lodash.forEach(env, function (v, k) { process.env[k] = v });
+
+var ifz = require('../lib/ifz');
+var repl = require('repl');
+
+repl.start({
+  eval: function (cmd, context, filename, cb) {
+    ifz.doInput({
+      username: 'ifzbot',
+      from: '@player',
+      text: cmd,
+      url: ''
+    }, function (err, res) {
+      if (err) return cb(err);
+      console.log(res);
+      cb();
+    })
+  }
+})
+
+
+
